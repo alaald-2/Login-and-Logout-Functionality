@@ -63,16 +63,18 @@ public class Main {
             driver.findElement(By.id("email")).sendKeys(email);
             driver.findElement(By.id("pass")).sendKeys(password);
             driver.findElement(By.name("login")).click();
+
+            // Verify that the user is logged in and redirected to their profile page
+            String expectedUrl = "https://www.facebook.com/";
+            String actualUrl = driver.getCurrentUrl();
+            if (actualUrl.contains(expectedUrl)) {
+                logger.info("login successful.");
+                System.out.println("User is successfully logged in to their profile page.");
+            } else {
+                logger.error("Login failed. User is not redirected to their profile page. Expected URL: {}, Actual URL: {}", expectedUrl, actualUrl);
+            }
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
-        }
-        // Verify that the user is logged in and redirected to their profile page
-        String expectedUrl = "https://www.facebook.com/";
-        String actualUrl = driver.getCurrentUrl();
-        if (actualUrl.contains(expectedUrl)) {
-            System.out.println("User is successfully logged in to their profile page.");
-        } else {
-            System.out.println("Login failed. User is not redirected to their profile page.");
         }
 
         // Wait
@@ -91,7 +93,7 @@ public class Main {
 
             // Perform logout
             if(logoutButton.isDisplayed()) {
-                logger.debug("Logout successful."); // Log debug message using logger
+                logger.info("Logout successful."); // Log debug message using logger
                 System.out.println("User is successfully logged out of their profile page.");
             } else {
                 logger.error("Logout unsuccessful."); // Log error message using logger
