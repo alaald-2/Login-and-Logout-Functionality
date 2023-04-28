@@ -68,7 +68,7 @@ public class Main {
             String expectedUrl = "https://www.facebook.com/";
             String actualUrl = driver.getCurrentUrl();
             if (actualUrl.contains(expectedUrl)) {
-                logger.info("login successful.");
+                logger.debug("login successful.");
                 System.out.println("User is successfully logged in to their profile page.");
             } else {
                 logger.error("Login failed. User is not redirected to their profile page. Expected URL: {}, Actual URL: {}", expectedUrl, actualUrl);
@@ -93,7 +93,7 @@ public class Main {
 
             // Perform logout
             if(logoutButton.isDisplayed()) {
-                logger.info("Logout successful."); // Log debug message using logger
+                logger.debug("Logout successful."); // Log debug message using logger
                 System.out.println("User is successfully logged out of their profile page.");
             } else {
                 logger.error("Logout unsuccessful."); // Log error message using logger
