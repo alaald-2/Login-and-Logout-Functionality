@@ -39,7 +39,7 @@ public class Main {
 
         // Wait for the cookie policy popup to appear
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        By allowAllCookiesButton = By.xpath("//button[text()='Allow essential and optional cookies']");
+        By allowAllCookiesButton = By.xpath("//button[text()='Allow all cookies']");
         WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(allowAllCookiesButton));
         element.click();
 
